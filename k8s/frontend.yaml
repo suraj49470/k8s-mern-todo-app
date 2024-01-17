@@ -17,8 +17,8 @@ spec:
         image: suraj49470/3-tier-todo-frontend:1
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "10Mi"
+            cpu: "10m"
         ports:
         - containerPort: 80
 

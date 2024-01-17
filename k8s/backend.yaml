@@ -23,9 +23,9 @@ spec:
           - name: SECRET
             value:  "Conor@60g"
         resources:
-          # limits:
-          #   memory: "128Mi"
-          #   cpu: "500m"
+          limits:
+            memory: "250Mi"
+            cpu: "100m"
         ports:
         - containerPort: 8080
 ---
