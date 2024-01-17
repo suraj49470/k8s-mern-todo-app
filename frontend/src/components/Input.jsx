@@ -14,7 +14,7 @@ function Input() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch("https://mern-appl-wyiu.onrender.com/api/todos", {
+        const response = await fetch("/api/todos", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
