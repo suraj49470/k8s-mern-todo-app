@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import AuthContext from "../context/AuthContext";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -8,6 +8,7 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const { dispatch } = useContext(AuthContext);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +39,9 @@ const Login = () => {
   return (
     <form className="signup" onSubmit={handleSubmit}>
 
+       
       <h3>Sign In</h3>
+      
       
       <div>
         <label>Email address</label>
@@ -61,6 +64,7 @@ const Login = () => {
       </div>
 
       <button>Login</button>
+      <Link to="/signup">signup</Link>
       {error && <div>{error}</div>}
     </form>
   )
