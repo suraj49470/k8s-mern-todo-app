@@ -2,18 +2,16 @@ name: frontend
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
-  REPO_UI : suraj49470/3-tier-todo-backend
+  REPO_UI: suraj49470/3-tier-todo-frontend
   DOCKER_IMAGE_VERSION: 1.0
-  DOCKER_CONTEXT_PATH: backend
-
+  DOCKER_CONTEXT_PATH: frontend
 
 jobs:
   frontend_build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +20,10 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
-      
+
       - name: BUILD FRONTEND IAMGE
         run: |
-          docker build -t ${{ env.REPO_UI }} ./${{ env.DOCKER_CONTEXT_PATH }}   
+          docker build -t ${{ env.REPO_UI }} ./${{ env.DOCKER_CONTEXT_PATH }}
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
@@ -35,11 +33,8 @@ jobs:
           password: ${{ secrets.DOCKER_USER_PASSWORD}}
 
       - name: PUSH FRONTEND IMAGE
-        run:  |
+        run: |
           docker image ls
           docker tag ${{ env.REPO_UI }} ${{env.REPO_UI}}:${{env.DOCKER_IMAGE_VERSION}}
-          docker push ${{env.REPO_UI}}:${{env.DOCKER_IMAGE_VERSION}} 
+          docker push ${{env.REPO_UI}}:${{env.DOCKER_IMAGE_VERSION}}
         shell: bash
-  
-
-
