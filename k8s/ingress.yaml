@@ -6,7 +6,7 @@ metadata:
     name: 3-tier-todo-app
 spec:
   rules:
-  - host: 3-tier-todo-app.com
+  - host: ''
     http:
       paths:
       - pathType: Prefix
